@@ -5,13 +5,12 @@ public class MovePlayer : MonoBehaviour
     public float speed = 6.0F;
     public float jumpSpeed = 8.0F;
     public float gravity = 20.0F;
-    public float rotateSpeed = 3.0F;
+    public float rotateSpeed = 2F;
     private Vector3 moveDirection = Vector3.zero;
 
     // Update is called once per frame
     void Update()
     {
-
         CharacterController controller = GetComponent<CharacterController>();
         if (controller.isGrounded)
         {
@@ -26,7 +25,6 @@ public class MovePlayer : MonoBehaviour
         controller.Move(moveDirection * Time.deltaTime);
 
         //Rotate player
-        transform.Rotate(0, Input.GetAxis("Horizontal"), 0);
-
+        transform.Rotate(0, Input.GetAxis("Horizontal") * rotateSpeed, 0);
     }
 }
